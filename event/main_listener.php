@@ -1,14 +1,11 @@
 <?php
-
 /**
-*
-* @package Anavaro.com PM Admin
-* @copyright (c) 2014 Lucifer
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-*/
-
-namespace anavaro\pmsearch\event;
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\event;
 
 /**
 * Event listener
@@ -47,7 +44,7 @@ class main_listener implements EventSubscriberInterface
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db,
 		\phpbb\template\template $template,
-		\anavaro\pmsearch\helper $search_helper)
+		\bbw\pmsearch\helper $search_helper)
 	{
 		$this->config = $config;
 		$this->db = $db;
@@ -133,7 +130,7 @@ class main_listener implements EventSubscriberInterface
 	public function pm_search_with_user($event)
 	{
 		$target = $event['member']['user_id'];
-		$url = generate_board_url() . '/ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search&terms=nick&keywords=' . $target;
+		$url = generate_board_url() . '/ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search&terms=nick&keywords=' . $target;
 		$this->template->assign_vars(array(
 			'S_SEARCH_WITH_USER'	=> true,
 			'U_SEARCH_WITH_USER'	=> $url

@@ -1,13 +1,11 @@
 <?php
 /**
-*
-* @package migration
-* @copyright (c) 2014 phpBB Group
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License v2
-*
-*/
-
-namespace anavaro\pmsearch\migrations;
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\migrations;
 
 class release_1_0_0 extends \phpbb\db\migration\migration
 {
@@ -24,9 +22,9 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'acp',
 				'ACP_PMSEARCH_GRP',
 				array(
-					'module_basename'	=> '\anavaro\pmsearch\acp\acp_pmsearch_module',
+					'module_basename'	=> '\bbw\pmsearch\acp\acp_pmsearch_module',
 					'module_mode'		=> array('main'),
-					'module_auth'        => 'ext_anavaro/pmsearch && acl_a_user',
+					'module_auth'        => 'ext_bbw/pmsearch && acl_a_user',
 				)
 			)),
 			//Add extension UCP module
@@ -34,9 +32,9 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'ucp',
 				'UCP_PM',
 				array(
-					'module_basename'	=> '\anavaro\pmsearch\ucp\ucp_pmsearch_module',
+					'module_basename'	=> '\bbw\pmsearch\ucp\ucp_pmsearch_module',
 					'module_modes' => array('search'),
-					'module_auth'	=> 'ext_anavaro/pmsearch',
+					'module_auth'	=> 'ext_bbw/pmsearch',
 				),
 
 			)),

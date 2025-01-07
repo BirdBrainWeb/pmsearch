@@ -1,15 +1,11 @@
 <?php
 /**
-*
-* @package Anavaro.com PM Search
-* @copyright (c) 2013 Lucifer
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-*/
-/**
-* @ignore
-*/
-namespace anavaro\pmsearch\acp;
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\acp;
 
 /**
 * @package acp
@@ -27,7 +23,7 @@ class acp_pmsearch_module
 		global $config, $user, $table_prefix, $db, $template, $request, $phpbb_root_path, $phpbb_log, $phpbb_admin_path, $phpEx;
 		global $phpbb_container;
 
-		$this->search_helper = $phpbb_container->get('anavaro.pmsearch.search.helper');
+		$this->search_helper = $phpbb_container->get('bbw.pmsearch.search.helper');
 
 		switch($mode)
 		{
@@ -248,7 +244,7 @@ class acp_pmsearch_module
 		return $finder
 			->extension_suffix('_backend1')
 			->extension_directory('')
-			->core_path('ext/anavaro/pmsearch/search/')
+			->core_path('ext/bbw/pmsearch/search/')
 			->get_classes();
 	}
 	function save_state($state = false)

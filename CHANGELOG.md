@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Forked extension to continue development.
 - Change vendor prefix from 'anavaro' to 'bbw'.
+- Change name namespace and similar from 'anavaro' to 'bbw'.
 
 ### Removed
 

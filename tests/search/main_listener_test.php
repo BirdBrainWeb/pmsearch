@@ -1,13 +1,12 @@
 <?php
 /**
- *
- * phpBB PM Search events test
- *
- * @copyright (c) 2015 Lucifer <https://www.anavaro.com>
- * @license GNU General Public License, version 2 (GPL-2.0)
- *
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
  */
-namespace anavaro\pmsearch\tests\search;
+namespace bbw\pmsearch\tests\search;
+
 /**
  * @group event
  */
@@ -22,7 +21,7 @@ class main_event_test extends \phpbb_database_test_case
 	 */
 	static protected function setup_extensions()
 	{
-		return array('anavaro/pmsearch');
+		return array('bbw/pmsearch');
 	}
 
 	protected $db;
@@ -47,7 +46,7 @@ class main_event_test extends \phpbb_database_test_case
 		;
 		$this->config = new \phpbb\config\config(array());
 		$this->db = $this->new_dbal();
-		$this->search_helper = $this->getMockBuilder('\anavaro\pmsearch\helper')
+		$this->search_helper = $this->getMockBuilder('\bbw\pmsearch\helper')
 			->disableOriginalConstructor()
 			->getMock();
 	}
@@ -57,7 +56,7 @@ class main_event_test extends \phpbb_database_test_case
 	 */
 	protected function set_listener()
 	{
-		$this->listener = new \anavaro\pmsearch\event\main_listener(
+		$this->listener = new \bbw\pmsearch\event\main_listener(
 			$this->config,
 			$this->db,
 			$this->template,
@@ -75,7 +74,7 @@ class main_event_test extends \phpbb_database_test_case
 			'core.submit_pm_after',
 			'core.delete_pm_before',
 			'core.memberlist_view_profile'
-		), array_keys(\anavaro\pmsearch\event\main_listener::getSubscribedEvents()));
+		), array_keys(\bbw\pmsearch\event\main_listener::getSubscribedEvents()));
 	}
 
 	/**
@@ -92,7 +91,7 @@ class main_event_test extends \phpbb_database_test_case
 			->method('assign_vars')
 			->with(array(
 				'S_SEARCH_WITH_USER'	=> true,
-				'U_SEARCH_WITH_USER'	=> 'http://ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search&terms=nick&keywords=2'
+				'U_SEARCH_WITH_USER'	=> 'http://ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search&terms=nick&keywords=2'
 			));
 
 		$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();

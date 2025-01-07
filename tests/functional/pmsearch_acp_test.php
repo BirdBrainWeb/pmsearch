@@ -1,14 +1,11 @@
 <?php
 /**
-*
-* PM Search
-*
-* @copyright (c) 2014 Stanislav Atanasov
-* @license GNU General Public License, version 2 (GPL-2.0)
-*
-*/
-
-namespace anavaro\pmsearch\tests\functional;
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\tests\functional;
 
 /**
 * @group functional
@@ -24,8 +21,8 @@ class pmsearch_acp_test extends pmsearch_base
 		$this->login();
 		$this->admin_login();
 		
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$this->assertContainsLang('PMSEARCH_ADMIN', $crawler->text());
 		
@@ -37,8 +34,8 @@ class pmsearch_acp_test extends pmsearch_base
 		$message_id = $this->create_private_message('Test private message', 'This test private message sent testing framework. need check event indexing.', array($this->get_user_id('testuser1')));
 		
 		$this->admin_login();
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$this->assertContains('11', $crawler->filter('#indexed_words')->text());
 		$this->assertContains('14', $crawler->filter('#relative_indexes')->text());
@@ -50,8 +47,8 @@ class pmsearch_acp_test extends pmsearch_base
 	{
 		$this->login();
 		$this->admin_login();
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$form = $crawler->selectButton($this->lang('DELETE_INDEX'))->form();
 		$crawler = self::submit($form);
@@ -66,8 +63,8 @@ class pmsearch_acp_test extends pmsearch_base
 	{
 		$this->login();
 		$this->admin_login();
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$form = $crawler->selectButton($this->lang('CREATE_INDEX'))->form();
 		$crawler = self::submit($form);
@@ -91,8 +88,8 @@ class pmsearch_acp_test extends pmsearch_base
 		//get user to log in
 		$this->login('testuser1');
 		
-		$this->add_lang_ext('anavaro/pmsearch', 'info_ucp_pmsearch');
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$this->add_lang_ext('bbw/pmsearch', 'info_ucp_pmsearch');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$form = $crawler->selectButton($this->lang('SEARCH_PMS'))->form();
 		$form['keywords'] = 'Test';
@@ -102,7 +99,7 @@ class pmsearch_acp_test extends pmsearch_base
 		
 		$this->assertContains('5', $crawler->filter('.pagination')->text());
 		
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$form = $crawler->selectButton($this->lang('SEARCH_PMS'))->form();
 		$form['keywords'] = 'private';
@@ -144,8 +141,8 @@ class pmsearch_acp_test extends pmsearch_base
 		$this->login();
 		
 		$this->admin_login();
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$this->assertContains('26', $crawler->filter('#indexed_words')->text());
 		$this->assertContains('75', $crawler->filter('#relative_indexes')->text());
@@ -157,8 +154,8 @@ class pmsearch_acp_test extends pmsearch_base
 	{
 		$this->login();
 		
-		$this->add_lang_ext('anavaro/pmsearch', 'info_ucp_pmsearch');
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$this->add_lang_ext('bbw/pmsearch', 'info_ucp_pmsearch');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$form = $crawler->selectButton($this->lang('SEARCH_PMS'))->form();
 		$form['keywords'] = 'second';
@@ -168,7 +165,7 @@ class pmsearch_acp_test extends pmsearch_base
 		
 		$this->assertContains('1', $crawler->filter('.pagination')->text());
 		
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$form = $crawler->selectButton($this->lang('SEARCH_PMS'))->form();
 		$form['keywords'] = 'private';
@@ -182,8 +179,8 @@ class pmsearch_acp_test extends pmsearch_base
 	{
 		$this->login('testuser1');
 		
-		$this->add_lang_ext('anavaro/pmsearch', 'info_ucp_pmsearch');
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$this->add_lang_ext('bbw/pmsearch', 'info_ucp_pmsearch');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$form = $crawler->selectButton($this->lang('SEARCH_PMS'))->form();
 		$form['keywords'] = 'second';
@@ -193,7 +190,7 @@ class pmsearch_acp_test extends pmsearch_base
 		
 		$this->assertContainsLang('NO_RESULTS_FOUND', $crawler->text());
 		
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$form = $crawler->selectButton($this->lang('SEARCH_PMS'))->form();
 		$form['keywords'] = 'private';
@@ -229,8 +226,8 @@ class pmsearch_acp_test extends pmsearch_base
 		$crawler = self::submit($form);
 		
 		$this->admin_login();
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		//test step 3 begins
 		$this->assertContains('26', $crawler->filter('#indexed_words')->text());
@@ -246,8 +243,8 @@ class pmsearch_acp_test extends pmsearch_base
 		$message_id = $this->create_private_message('Test private message 6', 'This should delete indexes of unread messages.', array($this->get_user_id('testuser1')));
 		
 		$this->admin_login();
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$this->assertContains('31', $crawler->filter('#indexed_words')->text());
 		$this->assertContains('23', $crawler->filter('#relative_indexes')->text());
@@ -259,8 +256,8 @@ class pmsearch_acp_test extends pmsearch_base
 		$form = $crawler->selectButton('Yes')->form();
 		$crawler = self::submit($form);
 		
-		$this->add_lang_ext('anavaro/pmsearch', 'info_acp_pmsearch');
-		$crawler = self::request('GET', 'adm/index.php?i=-anavaro-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
+		$this->add_lang_ext('bbw/pmsearch', 'info_acp_pmsearch');
+		$crawler = self::request('GET', 'adm/index.php?i=-bbw-pmsearch-acp-acp_pmsearch_module&mode=main&sid=' . $this->sid);
 		
 		$this->assertContains('31', $crawler->filter('#indexed_words')->text());
 		$this->assertContains('14', $crawler->filter('#relative_indexes')->text());
@@ -304,8 +301,8 @@ class pmsearch_acp_test extends pmsearch_base
 		
 		$this->login('testuser1');
 		
-		$this->add_lang_ext('anavaro/pmsearch', 'info_ucp_pmsearch');
-		$crawler = self::request('GET', 'ucp.php?i=\anavaro\pmsearch\ucp\ucp_pmsearch_module&mode=search');
+		$this->add_lang_ext('bbw/pmsearch', 'info_ucp_pmsearch');
+		$crawler = self::request('GET', 'ucp.php?i=\bbw\pmsearch\ucp\ucp_pmsearch_module&mode=search');
 		
 		$this->assertContainsLang('ACCESS_DENIED', $crawler->filter('html')->text());
 		

@@ -1,5 +1,10 @@
 <?php
 /**
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+
  * native_test.php
  * part of pmsearch
  * Created by Stanislav Atanasov.
@@ -11,7 +16,7 @@
  *
  */
 
-namespace anavaro\pmsearch\tests\search;
+namespace bbw\pmsearch\tests\search;
 
 
 require_once dirname(__FILE__) . '/../../../../../../tests/test_framework/phpbb_search_test_case.php';
@@ -32,7 +37,7 @@ class native_test extends \phpbb_search_test_case
 	 */
 	static protected function setup_extensions()
 	{
-		return array('anavaro/pmsearch');
+		return array('bbw/pmsearch');
 	}
 	/**
 	 * Get data set fixtures
@@ -51,7 +56,7 @@ class native_test extends \phpbb_search_test_case
 		$this->db = $this->new_dbal();
 		$phpbb_dispatcher = new \phpbb_mock_event_dispatcher();
 		$error = null;
-		$class = self::get_search_wrapper('\anavaro\pmsearch\search\pm_search_fulltext_native');
+		$class = self::get_search_wrapper('\bbw\pmsearch\search\pm_search_fulltext_native');
 		if (PHP_VERSION_ID > 70399)
 		{
 			$errorlevel=error_reporting();

@@ -1,14 +1,11 @@
 <?php
 /**
-*
-* PM Search
-*
-* @copyright (c) 2014 Stanislav Atanasov
-* @license GNU General Public License, version 2 (GPL-2.0)
-*
-*/
-
-namespace anavaro\pmsearch\tests\functional;
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\tests\functional;
 
 /**
 * @group functional
@@ -17,7 +14,7 @@ class pmsearch_base extends \phpbb_functional_test_case
 {
 	static protected function setup_extensions()
 	{
-		return array('anavaro/pmsearch');
+		return array('bbw/pmsearch');
 	}
 
 	public function setUp() : void

@@ -1,17 +1,11 @@
 <?php
-
 /**
-*
-* @package Anavaro.com PM Search
-* @copyright (c) 2013 Lucifer
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-*/
-
-/**
-* @ignore
-*/
-namespace anavaro\pmsearch\ucp;
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\ucp;
 
 class ucp_pmsearch_module
 {
@@ -27,7 +21,7 @@ class ucp_pmsearch_module
 	{
 		global $db, $user, $auth, $template, $request, $phpbb_container, $config;
 		$this->config = $config;
-		$this->search_helper = $phpbb_container->get('anavaro.pmsearch.search.helper');
+		$this->search_helper = $phpbb_container->get('bbw.pmsearch.search.helper');
 		if (!$auth->acl_get('u_pmsearch'))
 		{
 			trigger_error('ACCESS_DENIED');

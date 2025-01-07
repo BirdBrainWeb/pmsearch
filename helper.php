@@ -1,13 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: lucifer
- * Date: 13.2.2017 г.
- * Time: 17:18
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Anavaro
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
  */
-
-namespace anavaro\pmsearch;
-
+namespace bbw\pmsearch;
 
 class helper
 {
@@ -33,7 +31,7 @@ class helper
 		return $finder
 			->extension_suffix('_backend1')
 			->extension_directory('')
-			->core_path('ext/anavaro/pmsearch/search/')
+			->core_path('ext/bbw/pmsearch/search/')
 			->get_classes();
 	}
 

@@ -1,17 +1,12 @@
 <?php
 /**
-*
-* This file is part of the phpBB Forum Software package.
-*
-* @copyright (c) phpBB Limited <https://www.phpbb.com>
-* @license GNU General Public License, version 2 (GPL-2.0)
-*
-* For full copyright and license information, please see
-* the docs/CREDITS.txt file.
-*
-*/
+ * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * @package bbw/pmsearch
+ * @copyright (c) Stanislav Atanasov
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
+namespace bbw\pmsearch\search;
 
-namespace anavaro\pmsearch\search;
 /**
 * phpBB's own db driven fulltext search, version 2
 */
@@ -20,10 +15,10 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	protected $target;
 
 	/**
-	* Returns the name of this search backend to be displayed to administrators
-	*
-	* @return string Name
-	*/
+	 * Returns the name of this search backend to be displayed to administrators
+	 *
+	 * @return string Name
+	 */
 	public function get_name($type = 'normal')
 	{
 		switch ($type)
@@ -34,6 +29,10 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 		}
 	}
 
+	/*
+	 *
+	 * @return string
+	 */
 	public function get_common_words()
 	{
 		return $this->common_words;
@@ -50,20 +49,20 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* This function fills $this->search_query with the cleaned user search query
-	*
-	* If $terms is 'any' then the words will be extracted from the search query
-	* and combined with | inside brackets. They will afterwards be treated like
-	* an standard search query.
-	*
-	* Then it analyses the query and fills the internal arrays $must_not_contain_ids,
-	* $must_contain_ids and $must_exclude_one_ids which are later used by keyword_search()
-	*
-	* @param	string	$keywords	contains the search query string as entered by the user
-	* @param	string	$terms		is either 'all' (use search query as entered, default words to 'must be contained in post')
-	* 	or 'any' (find all posts containing at least one of the given words)
-	* @return	boolean				false if no valid keywords were found and otherwise true
-	*/
+	 * This function fills $this->search_query with the cleaned user search query
+	 *
+	 * If $terms is 'any' then the words will be extracted from the search query
+	 * and combined with | inside brackets. They will afterwards be treated like
+	 * an standard search query.
+	 *
+	 * Then it analyses the query and fills the internal arrays $must_not_contain_ids,
+	 * $must_contain_ids and $must_exclude_one_ids which are later used by keyword_search()
+	 *
+	 * @param	string	$keywords	contains the search query string as entered by the user
+	 * @param	string	$terms		is either 'all' (use search query as entered, default words to 'must be contained in post')
+	 * 	or 'any' (find all posts containing at least one of the given words)
+	 * @return	boolean				false if no valid keywords were found and otherwise true
+	 */
 	public function split_keywords($keywords, $terms)
 	{
 		$swl_table = PRIVMSGS_TABLE . '_swl';
@@ -367,22 +366,22 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* Performs a search on keywords depending on display specific params. You have to run split_keywords() first
-	*
-	* @param	string		$type				wchich type of table to be searched defaults to norma
-	* @param	string		$fields				contains either titleonly (topic titles should be searched), msgonly (only message bodies should be searched), firstpost (only subject and body of the first post should be searched) or all (all post bodies and subjects should be searched)
-	* @param	string		$terms				is either 'all' (use query as entered, words without prefix should default to "have to be in field") or 'any' (ignore search query parts and just return all posts that contain any of the specified words)
-	* @param	array		$sort_by_sql		contains SQL code for the ORDER BY part of a query
-	* @param	string		$sort_key			is the key of $sort_by_sql for the selected sorting
-	* @param	string		$sort_dir			is either a or d representing ASC and DESC
-	* @param	string		$sort_days			specifies the maximum amount of days a post may be old
-	* @param	array		$author_ary			an array of author ids if the author should be ignored during the search the array is empty
-	* @param	string		$author_name		specifies the author match, when ANONYMOUS is also a search-match
-	* @param	array		&$id_ary			passed by reference, to be filled with ids for the page specified by $start and $per_page, should be ordered
-	* @param	int			$start				indicates the first index of the page
-	* @param	int			$per_page			number of ids each page is supposed to contain
-	* @return	boolean|int						total number of results
-	*/
+	 * Performs a search on keywords depending on display specific params. You have to run split_keywords() first.
+	 *
+	 * @param	string		$type				wchich type of table to be searched defaults to norma
+	 * @param	string		$fields				contains either titleonly (topic titles should be searched), msgonly (only message bodies should be searched), firstpost (only subject and body of the first post should be searched) or all (all post bodies and subjects should be searched)
+	 * @param	string		$terms				is either 'all' (use query as entered, words without prefix should default to "have to be in field") or 'any' (ignore search query parts and just return all posts that contain any of the specified words)
+	 * @param	array		$sort_by_sql		contains SQL code for the ORDER BY part of a query
+	 * @param	string		$sort_key			is the key of $sort_by_sql for the selected sorting
+	 * @param	string		$sort_dir			is either a or d representing ASC and DESC
+	 * @param	string		$sort_days			specifies the maximum amount of days a post may be old
+	 * @param	array		$author_ary			an array of author ids if the author should be ignored during the search the array is empty
+	 * @param	string		$author_name		specifies the author match, when ANONYMOUS is also a search-match
+	 * @param	array		&$id_ary			passed by reference, to be filled with ids for the page specified by $start and $per_page, should be ordered
+	 * @param	int			$start				indicates the first index of the page
+	 * @param	int			$per_page			number of ids each page is supposed to contain
+	 * @return	boolean|int						total number of results
+	 */
 	public function keyword_search($type, $fields, $terms, $sort_by_sql, $sort_key, $sort_dir, $sort_days, $ex_fid_ary, $post_visibility, $topic_id, $author_ary, $author_name, &$id_ary, &$start, $per_page)
 	{
 		// No keywords? No posts.
@@ -721,15 +720,15 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* Updates wordlist and wordmatch tables when a message is posted or changed
-	*
-	* @param	string	$mode		Contains the post mode: edit, post, reply, quote
-	* @param	int		$post_id	The id of the post which is modified/created
-	* @param	string	&$message	New or updated post content
-	* @param	string	&$subject	New or updated post subject
-	* @param	int		$poster_id	Post author's user id
-	* @param	int		$forum_id	The id of the forum in which the post is located
-	*/
+	 * Updates wordlist and wordmatch tables when a message is posted or changed
+	 *
+	 * @param	string	$mode		Contains the post mode: edit, post, reply, quote
+	 * @param	int		$post_id	The id of the post which is modified/created
+	 * @param	string	&$message	New or updated post content
+	 * @param	string	&$subject	New or updated post subject
+	 * @param	int		$poster_id	Post author's user id
+	 * @param	int		$forum_id	The id of the forum in which the post is located
+	 */
 	public function index($mode, $post_id, &$message, &$subject, $poster_id, $forum_id = '')
 	{
 		$wordlist = PRIVMSGS_TABLE . '_swl';
@@ -944,9 +943,9 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* Tidy up indexes: Tag 'common words' and remove
-	* words no longer referenced in the match table
-	*/
+	 * Tidy up indexes: Tag 'common words' and remove
+	 * words no longer referenced in the match table
+	 */
 	public function tidy()
 	{
 		$swl_table = PRIVMSGS_TABLE . '_swl';
@@ -1011,8 +1010,8 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* Deletes all words from the index
-	*/
+	 * Deletes all words from the index
+	 */
 	public function delete_index($acp_module, $u_action, $type = 'normal')
 	{
 		$swl_table = PRIVMSGS_TABLE . '_swl';
@@ -1036,8 +1035,8 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* Returns true if both FULLTEXT indexes exist
-	*/
+	 * Returns true if both FULLTEXT indexes exist
+	 */
 	public function index_created($type = 'normal')
 	{
 		if (!sizeof($this->stats))
@@ -1053,8 +1052,8 @@ class pm_search_fulltext_native extends \phpbb\search\fulltext_native
 	}
 
 	/**
-	* Returns an associative array containing information about the indexes
-	*/
+	 * Returns an associative array containing information about the indexes
+	 */
 	public function index_stats($type = 'normal')
 	{
 		if (!sizeof($this->stats))

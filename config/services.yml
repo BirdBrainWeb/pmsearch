@@ -1,15 +1,15 @@
 services:
-    anavaro.pmsearch.listener:
-        class: anavaro\pmsearch\event\main_listener
+    bbw.pmsearch.listener:
+        class: bbw\pmsearch\event\main_listener
         arguments:
             - '@config'
             - '@dbal.conn'
             - '@template'
-            - '@anavaro.pmsearch.search.helper'
+            - '@bbw.pmsearch.search.helper'
         tags:
             - { name: event.listener }
-    anavaro.pmsearch.search.helper:
-        class: anavaro\pmsearch\helper
+    bbw.pmsearch.search.helper:
+        class: bbw\pmsearch\helper
         arguments:
             - '@ext.manager'
             - '@auth'
@@ -20,8 +20,8 @@ services:
             - '@dispatcher'
             - '%core.root_path%'
             - '%core.php_ext%'
-    anavaro.pmsearch.fulltext_native:
-        class: anavaro\pmadmin\search\pm_admin_fulltext_native
+    bbw.pmsearch.fulltext_native:
+        class: bbw\pmadmin\search\pm_admin_fulltext_native
         arguments:
             - '@auth'
             - '@config'
