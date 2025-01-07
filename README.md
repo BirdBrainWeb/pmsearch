@@ -18,7 +18,13 @@
   - Register every PM for indexing
   - Remove PM removes index
 
+## Notes
+
+- [Original extension listing](https://www.phpbb.com/community/viewtopic.php?f=456&t=2263011) (abandoned)
+
 ## Donate
+
+(From original extension developer.)
 
 If you like my code - buy me a beer/coffee/license for PhpStorm :D
 

@@ -1,23 +1,23 @@
 {
-	"name": "anavaro/pmsearch",
+	"name": "bbw/pmsearch",
 	"type": "phpbb-extension",
-	"description": "Adds support for event medals",
-	"homepage": "https://www.phpbb.com/community/viewtopic.php?f=456&t=2263011",
-	"version": "1.0.1",
-	"time": "2019-08-01",
+	"description": "Adds feature to search through private messages in phpBB via the UCP.",
+	"homepage": "https://birdbrainweb.ca/phpbb/extension/pmsearch/",
+	"version": "2.0.0",
+	"time": "2025-01-06",
 	"license": "GPL-2.0",
 	"authors": [
-		{
-			"name": "Stanislav Atanasov",
-			"email": "lucifer@anavaro.com",
-			"homepage": "http://anavaro.com",
-			"role": "Lead Developer"
-		},
 		{
 			"name": "Matthew Bird",
 			"email": "hello@matthewbird.ca",
 			"homepage": "https://matthewbird.ca",
-			"role": "Maintainer"
+			"role": "Developer"
+		},
+		{
+			"name": "Stanislav Atanasov",
+			"email": "lucifer@anavaro.com",
+			"homepage": "http://anavaro.com",
+			"role": "Original Developer"
 		}
 	],
 	"require": {
@@ -30,8 +30,8 @@
 	"extra": {
 		"display-name": "PM Search",
 		"version-check": {
-			"host": "lab.anavaro.com",
-			"directory": "/phpbb-ext",
+			"host": "api.updates.birdbrainweb.ca",
+			"directory": "/phpbb/extensions/bbw",
 			"filename": "pmsearch.json"
 		},
 		"soft-require": {
