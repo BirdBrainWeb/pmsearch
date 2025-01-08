@@ -1,12 +1,9 @@
 <?php
 /**
-*
-* PM Search extension for the phpBB Forum Software package.
-*
-*
-* @license GNU General Public License, version 2 (GPL-2.0)
-*
-*/
+ * This file is part of the PM Search extension for phpBB.
+ * @package bbw/pmsearch
+ * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
+ */
 
 /**
 * DO NOT CHANGE
@@ -38,9 +35,11 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	// ACP general langauge
-	'ACP_PMSEARCH_GRP'	=> 'Search in PMs',
-	'ACP_PRVOPT'	=> 'Settings',
+	// Standard strings
+	'ACP_PMSEARCH'               => 'PM Search',
+	'ACP_PMSEARCH_TITLE'         => 'Settings',
+	'ACP_PMSEARCH_GOODBYE'       => 'Should say goodbye?',
+	'ACP_PMSEARCH_SETTING_SAVED' => 'Settings have been saved successfully!',
 
 	//ACP PM Admin Settings page
 	'PMSEARCH_ADMIN'	=> 'Search in PMs',

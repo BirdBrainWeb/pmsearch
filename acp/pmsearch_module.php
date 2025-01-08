@@ -1,16 +1,14 @@
 <?php
 /**
- * This file is part of the PM Search extension for phpBB 3.1/3.2.
+ * This file is part of the PM Search extension for phpBB.
  * @package bbw/pmsearch
- * @copyright (c) Stanislav Atanasov
  * @license GNU General Public License, version 2 [GPL-2.0](https://opensource.org/license/gpl-2-0)
  */
 namespace bbw\pmsearch\acp;
 
 /**
-* @package acp
-*/
-class acp_pmsearch_module
+ */
+class pmsearch_module
 {
 	private $search_helper;
 	var $state;
@@ -18,6 +16,7 @@ class acp_pmsearch_module
 	var $max_post_id;
 	var $batch_size = 200;
 	var $u_action;
+
 	function main($id, $mode)
 	{
 		global $config, $user, $table_prefix, $db, $template, $request, $phpbb_root_path, $phpbb_log, $phpbb_admin_path, $phpEx;
@@ -235,6 +234,7 @@ class acp_pmsearch_module
 			break;
 		}
 	}
+
 	function get_search_types()
 	{
 		global $phpbb_root_path, $phpEx, $phpbb_extension_manager;
@@ -247,6 +247,7 @@ class acp_pmsearch_module
 			->core_path('ext/bbw/pmsearch/search/')
 			->get_classes();
 	}
+
 	function save_state($state = false)
 	{
 		global $config;
@@ -272,11 +273,12 @@ class acp_pmsearch_module
 
 		return $max_post_id;
 	}
+
 	/**
-	* Initialises a search backend object
-	*
-	* @return false if no error occurred else an error message
-	*/
+	 * Initialises a search backend object
+	 *
+	 * @return false if no error occurred else an error message
+	 */
 	function init_search($type, &$search, &$error)
 	{
 		global $phpbb_root_path, $phpEx, $user, $auth, $config, $db, $table_prefix;

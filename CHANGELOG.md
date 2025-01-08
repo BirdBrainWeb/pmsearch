@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- ...
+- Add search box on PM pages of UCP using `'ucp_header_content_before'` template event.
 
 ### Changed
 
